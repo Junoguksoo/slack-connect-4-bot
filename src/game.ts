@@ -93,6 +93,7 @@ export class Game {
       return;
     }
 
+    // Set the next available board slot in the provided column to the player's color
     let row: number;
     for (row = 0; row < HEIGHT; ++row) {
       if (this._board[row][column] === Slot.FREE) {
@@ -169,6 +170,7 @@ export class Game {
           return;
         }
 
+        // Core game loop
         switch (this._status) {
           case Status.PLAYING:
             this.updateGame(dataObj);
@@ -182,12 +184,6 @@ export class Game {
     return ws;
   }
 
-  /**
-   * Checks whether the counter just played was a winning move for that player.
-   * Only looks at the winning positions the most recent counter is in, and only checks if the player
-   * that just played has won, not both players.
-   * @returns {boolean}
-   */
   private checkWinner (row: number, column: number, slot: Slot): boolean {
     // TODO
     return false;
@@ -254,6 +250,8 @@ export class Game {
   }
 
   private updateGame (dataObj: any): void {
+    // Only one game can be played at a time, so if the user messaging the bot
+    // is not currently one of the two players, they cannot continue.
     if (!this.isUserPlaying(dataObj.user)) {
       this.sendInstantMessage(dataObj.user, 'There is a game currently in session. Please try again later.');
       return;

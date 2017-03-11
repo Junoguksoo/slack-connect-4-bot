@@ -23,6 +23,7 @@ export class SlackApi {
           throw Error(response.error);
         }
 
+        // Once connected to RTM API, the Game will handle everything else
         this._game = new Game(response.url, response.users, response.ims)
       });
   }
