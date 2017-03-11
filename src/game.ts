@@ -1,8 +1,8 @@
 import * as _ from 'lodash';
 import * as WebSocket from 'ws';
 
-const WIDTH = 2;
-const HEIGHT = 2;
+const WIDTH = 7;
+const HEIGHT = 6;
 
 export enum Slot {
   FREE,
