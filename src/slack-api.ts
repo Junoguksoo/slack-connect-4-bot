@@ -19,6 +19,10 @@ export class SlackApi {
 
     return this.makeApiRequest('rtm.start', requestOptions)
       .then((response) => {
+        if (!response.ok) {
+          throw Error(response.error);
+        }
+
         this._game = new Game(response.url, response.users, response.ims)
       });
   }

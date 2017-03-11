@@ -15,7 +15,11 @@ if (!slackApiToken) {
 
 const slackApi: SlackApi = new SlackApi(slackApiToken);
 
-slackApi.connect();
+slackApi.connect()
+  .catch((error) => {
+    console.error('Error connecting to Slack: ', error);
+    process.exit(1);
+  });
 
 function gracefulExit(): void {
   slackApi.disconnect()
