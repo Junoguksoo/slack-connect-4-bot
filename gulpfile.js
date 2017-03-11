@@ -3,7 +3,6 @@
 const gulp = require('gulp');
 const clean = require('gulp-clean');
 const exit = require('gulp-exit');
-const mocha = require('gulp-mocha');
 const sourcemaps = require('gulp-sourcemaps');
 const ts = require('gulp-typescript');
 const runSequence = require('run-sequence');
