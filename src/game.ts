@@ -392,6 +392,7 @@ export class Game {
     if (!opponent) {
       this.sendInstantMessage(dataObj.user,
         'That\'s not a valid opponent.');
+      this.sendInstantMessage(dataObj.user, 'That\'s not a valid opponent.');
       return;
     }
 
