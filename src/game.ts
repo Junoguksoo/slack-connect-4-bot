@@ -390,8 +390,6 @@ export class Game {
     const opponent: ISlackUser = this._usersByUserId[extractUserId(words[1])];
 
     if (!opponent) {
-      this.sendInstantMessage(dataObj.user,
-        'That\'s not a valid opponent.');
       this.sendInstantMessage(dataObj.user, 'That\'s not a valid opponent.');
       return;
     }
