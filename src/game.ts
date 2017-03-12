@@ -394,6 +394,11 @@ export class Game {
       return;
     }
 
+    if (opponent.id === dataObj.user) {
+      this.sendInstantMessage(dataObj.user, 'Hey! You can\'t challenge yourself! Try playing with a friend');
+      return;
+    }
+
     this._currentTurnUserId = dataObj.user;
 
     const challenger: ISlackUser = this._usersByUserId[dataObj.user];
