@@ -185,8 +185,98 @@ export class Game {
   }
 
   private checkWinner (row: number, column: number, slot: Slot): boolean {
-    // TODO
-    return false;
+    return this.checkHorizontal(row, column, slot) ||
+      this.checkVertical(row, column, slot) ||
+      this.checkDiagonal(row, column, slot);
+  }
+
+  private checkHorizontal (row: number, column: number, slot: Slot): boolean {
+    let counter: number = 1;
+
+    for (let i = column - 1; i >= 0; --i) {
+      if (this._board[row][i] !== slot) {
+        break;
+      }
+
+      counter += 1;
+    }
+
+    for (let i = column + 1; i < WIDTH; --i) {
+      if (this._board[row][i] !== slot) {
+        break;
+      }
+
+      counter += 1;
+    }
+
+    return counter >= 4;
+  }
+
+  private checkVertical (row: number, column: number, slot: Slot): boolean {
+    let counter: number = 1;
+
+    for (let i = row - 1; i >= 0; --i) {
+      if (this._board[i][column] !== slot) {
+        break;
+      }
+
+      counter += 1;
+    }
+
+    for (let i = row + 1; i < HEIGHT; --i) {
+      if (this._board[i][column] !== slot) {
+        break;
+      }
+
+      counter += 1;
+    }
+
+    return counter >= 4;
+  }
+
+  private checkDiagonal (row: number, column: number, slot: Slot): boolean {
+    let counter: number = 1;
+
+    for (let i = row - 1, j = column - 1; i >= 0 && j >= 0; --i, --j) {
+      if (this._board[i][j] !== slot) {
+        break;
+      }
+
+      counter += 1;
+    }
+
+    for (let i = row + 1, j = column + 1; i < HEIGHT && j < WIDTH; ++i, ++j) {
+      if (this._board[i][j] !== slot) {
+        break;
+      }
+
+      counter += 1;
+    }
+
+    if (counter >= 4) {
+      return true;
+    }
+
+    counter = 1;
+
+    for (let i = row - 1, j = column + 1; i >= 0 && j < WIDTH; --i, ++j) {
+      if (this._board[i][j] !== slot) {
+        break;
+      }
+
+      counter += 1;
+    }
+
+    for (let i = row + 1, j = column - 1; i < HEIGHT && j >= 0; ++i, --j) {
+      if (this._board[i][j] !== slot) {
+        break;
+      }
+
+      counter += 1;
+    }
+
+
+    return counter >= 4;
   }
 
   private diplayBoard (): string {
