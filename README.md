@@ -2,7 +2,7 @@
 
 ## Running the bot
 
-> This assumes you have Nodejs (node) installed. This tested on Nodejs v6.9.1.
+> This assumes you have Nodejs (node) installed. This was tested on Nodejs v6.9.1.
 
 Replace XXXXX with your own bot's API token.
 ```
